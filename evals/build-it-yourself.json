@@ -1,0 +1,33 @@
+[
+  {
+    "skills": ["build-it-yourself"],
+    "query": "I need a logout button in the header of my React app. I've never done this here before. Where would I even start?",
+    "expected_behavior": [
+      "Loads the build-it-yourself skill",
+      "Reads the project's agent instructions and the files next to the header before writing any step, and names the files it read",
+      "States that none of the code has been run yet",
+      "Step 0 asks what the user should see at the end and where the data comes from, and contains no code"
+    ]
+  },
+  {
+    "skills": ["build-it-yourself"],
+    "query": "Add a logout button to the header that calls POST /api/logout and redirects to /login.",
+    "expected_behavior": [
+      "Does not load the build-it-yourself skill",
+      "Implements the change directly instead of guiding the user step by step"
+    ]
+  },
+  {
+    "skills": ["build-it-yourself"],
+    "query": "I want to add a logout button to the header and type the code myself. Don't give me the finished code, walk me through it.",
+    "expected_behavior": [
+      "Loads the build-it-yourself skill",
+      "Step 1 creates an empty component and wires it into the header in the same step, before any logic exists",
+      "Every step has the four parts in order: what the user thinks, what the user does, the whole file as it is now, what to check",
+      "Every code block in 'what the user does' follows the instruction it belongs to, and no change is described in prose only",
+      "Every new import names its package or path",
+      "The whole file under 'what you have now' contains no '...'",
+      "Each 'check' names concrete text, a number, or a status code the user will see"
+    ]
+  }
+]
