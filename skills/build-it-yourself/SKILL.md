@@ -1,6 +1,6 @@
 ---
 name: build-it-yourself
-description: Guide the user to build a feature themselves, one small step at a time, the way a human developer thinks it through, instead of handing over finished code. Use when the user wants help implementing something in their current project and wants to do the typing ("help me build this", "walk me through implementing X", "I'm staring at a blank page", "how would I even start?", "what would I do first, then second?"), in any language and any layer: frontend, backend, CLI, scripts. Also use when the request comes in another language, for example German "hilf mir, das umzusetzen" or "ich sitze vor einem leeren Blatt". Not for writing a tutorial, blog post, or docs page for other readers.
+description: Guide the user to build a feature themselves, one small step at a time, the way a human developer thinks it through, instead of handing over finished code. Use when the user wants help implementing something in their current project and wants to do the typing ("help me build this", "walk me through implementing X", "I'm staring at a blank page", "how would I even start?", "what would I do first, then second?"), in any language and any layer (frontend, backend, CLI, scripts). Also use when the request comes in another language, for example German "hilf mir, das umzusetzen" or "ich sitze vor einem leeren Blatt". Not for writing a tutorial, blog post, or docs page for other readers.
 ---
 
 # Build it yourself
