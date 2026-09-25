@@ -1,6 +1,6 @@
 ---
 name: build-it-yourself
-description: Guide the user to build a feature themselves, one small step at a time, the way a human developer thinks it through, instead of handing over finished code. Use when the user wants help implementing something in their current project and wants to do the typing ("help me build this", "walk me through implementing X", "I'm staring at a blank page", "how would I even start?", "what would I do first, then second?"), in any language and any layer (frontend, backend, CLI, scripts). Also use when the request comes in another language, for example German "hilf mir, das umzusetzen" or "ich sitze vor einem leeren Blatt". Not for writing a tutorial, blog post, or docs page for other readers.
+description: Guides the user through building a feature in their own project, one small checkable step at a time, while the user does the typing. Use when the user wants to write the code themselves ("I want to type it myself", "don't give me the code") or asks how a developer would approach it from a blank page ("where would I even start?"). Applies whatever language the request is written in. Not for requests that want finished code, and not for writing a tutorial, blog post, or docs page for other readers.
 ---
 
 # Build it yourself
@@ -21,14 +21,14 @@ Say up front what this round leaves out, so the user knows where it ends.
 
 **Step 0 is thinking only.** Two questions. What should the user see at the end? What data does that need, and where does each piece come from, with exact paths, modules, or endpoints? Everything else is computed from those.
 
-**Step 1 is an empty shell that is already wired in.** The smallest thing that shows up: a tab, a page, an endpoint returning a fixed value, a command that prints its name. Hook it into the app now, not at the end, so the user sees their file is alive before any logic exists. Nobody knows the final shape of a file when they create it, so a placeholder is the honest state of the work, not a shortcut. If a host file is done after this step, say so.
+**Step 1 is a walking skeleton: an empty shell that is already wired in.** The smallest thing that shows up: a tab, a page, an endpoint returning a fixed value, a command that prints its name. Hook it into the app now, not at the end, so the user sees their file is alive before any logic exists. Nobody knows the final shape of a file when they create it, so a placeholder is the honest state of the work, not a shortcut. If a host file is done after this step, say so.
 
 **Every further step adds exactly one thing** and can be checked right afterwards.
 
 Each step has four parts, in this order, with the labels written in the user's language:
 
 1. **You think:** the question a person asks themselves at this point, in plain words. "What do I show while it loads?" "Which item belongs in which group?"
-2. **You do:** the work itself, spoken to the user, one handgrip at a time. Instruction and code alternate: you say where to go and what this piece is for, and the code that goes there follows immediately, as a small block with just enough neighbouring lines to place it. Then the next handgrip. Never describe a change and leave the user to derive the code from the prose — if a line has to be typed, show it where you ask for it. Name every new import with its package or path, and anything that has to go, with the reason, such as an import that is now unused and would fail lint. Say which parts are placeholders and which step replaces them. What a later step will need does not belong here.
+2. **You do:** the work itself, spoken to the user, one edit at a time. Instruction and code alternate: you say where to go and what this piece is for, and the code that goes there follows immediately, as a small block with just enough neighbouring lines to place it. Then the next edit. Never describe a change and leave the user to derive the code from the prose — if a line has to be typed, show it where you ask for it. Name every new import with its package or path, and anything that has to go, with the reason, such as an import that is now unused and would fail lint. Say which parts are placeholders and which step replaces them.
 
    The order is the order of the hands, not the order of the file. A person writes the button, notices it needs a piece of state, scrolls up and adds it. Telling it in that order is closer to the truth than sorting the changes top to bottom, and it shows why each piece exists.
 3. **What you have now:** the file being built, printed whole, in its state after this step, with no `...`. This is where the user compares, after having typed everything already. If nothing was added to a file beyond what step 2 showed, say so instead of printing it twice.
@@ -51,7 +51,7 @@ When the user says they are done or pastes an error, run the project's check com
 
 ## Example of the shape
 
-Feature: a settings tab that lists the user's API keys. Step 1 is shown in full, because the alternation of instruction and code is the part that is easy to get wrong.
+Feature: a settings tab that lists the user's API keys. Only steps 0 and 1 are shown, because the alternation of instruction and code is the part that is easy to get wrong. Every later step has the same four parts.
 
 **Step 0: think first, type nothing**
 
@@ -101,11 +101,3 @@ The panel is rendered by the tab body below, which switches on that same value:
 *What you have now:* `ApiKeysPanel.tsx` is the block above, unchanged. In `settings.tsx` three lines came in, at three different places.
 
 *You check:* Settings, tab "API keys": a card titled "API keys". From here on you only work in `ApiKeysPanel.tsx`.
-
-**Step 2: load the keys and print them raw**
-
-*You think:* "Do the keys arrive at all? What do I show while they load, and when loading fails?"
-
-*You do:* the `useApiKeys()` call as the first line of the component, above every early return, then a return for loading and one for the error, then one temporary line that prints the key names instead of proper rows — with the code for each, in that order. Then the whole file.
-
-*You check:* the tab shows a spinner for a moment, then a line like "Keys: deploy, ci".
